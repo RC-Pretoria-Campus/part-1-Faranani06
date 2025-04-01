@@ -33,4 +33,46 @@ class CybersecurityChatbot
         //Starting the main chatbot interaction loop
         RunChatbot(synth, userName);
     }
+    //Method to display the ASCII art logo
+    static void DisplayAsciiArt()
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(@"
+         ██████╗██╗  ██╗ █████╗ ████████╗    ██████╗  ██████╗ ████████╗
+        ██╔════╝██║  ██║██╔══██╗╚══██╔══╝    ██╔══██╗██╔═══██╗╚══██╔══╝
+        ██║     ███████║███████║   ██║       ██████╔╝██║   ██║   ██║   
+        ██║     ██╔══██║██╔══██║   ██║       ██╔═══╝ ██║   ██║   ██║   
+        ╚██████╗██║  ██║██║  ██║   ██║       ██║     ╚██████╔╝   ██║   
+         ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝       ╚═╝      ╚═════╝    ╚═╝   
+                   Cybersecurity Awareness Bot
+        ");
+        Console.ResetColor();
+    }
 
+    //Main loop for interacting with the user
+    static void RunChatbot(SpeechSynthesizer synth, string userName)
+    {
+        while (true)
+        {
+            //Prompting the user to ask a question or exit
+            Console.Write($"\n{userName}, ask a question or type 'exit' to quit: ");
+            string question = Console.ReadLine().ToLower();
+
+            //A loop that shows exit if the user types exit
+            if (question == "exit")
+            {
+                synth.Speak($"Goodbye, {userName}! Stay safe online.");
+                Console.WriteLine($"Goodbye, {userName}! Stay safe online.");
+                break;
+            }
+
+            string response = GetResponse(question);
+            synth.Speak(response);
+
+            //Displaying the response in yellow text
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(response);
+            Console.ResetColor();
+        }
+    }
+}
