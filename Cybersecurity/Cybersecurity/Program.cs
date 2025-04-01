@@ -75,4 +75,25 @@ class CybersecurityChatbot
             Console.ResetColor();
         }
     }
+    //Method to provide responses to user questions
+    static string GetResponse(string question)
+    {
+        switch (question)
+        {
+            case "how are you?":
+                return "I'm just a bot, but thanks for asking! How can i assist you";
+            case "what's your purpose?":
+                return "Is to help you understand and practice safe online behavior to protect agaiinst threats.";
+            case "what can i ask you about?":
+                return "You can ask me about anything like password safety, phishing, and safe browsing.";
+            case "How can i ensure my password safety?":
+                return "Use strong passwords with a mix of letters, numbers, and symbols. Avoid reusing passwords.";
+            case "What is phishing?":
+                return "Phishing is a scam to steal personal information by pretending to be a trusted source.";
+            case "How can i browse the internet safely?":
+                return "Always use HTTPS websites and avoid downloading unknown files.";
+            default:
+                return "I didn't quite understand that. Could you please rephrase?";
+        }
+    }
 }
